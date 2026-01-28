@@ -1,0 +1,12 @@
+# Ignore binaries
+minikube-linux-amd64
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+
+# OS files
+.DS_Store
