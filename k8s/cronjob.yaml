@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+
+metadata:
+  name: solar-data-sync
+
+spec:
+  schedule: "0 2 * * *"
+
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: sync-job
+            image: yourdockerhub/solar-sync-app:latest
+
+            command:
+              - "python"
+              - "main.py"
+
+          restartPolicy: OnFailure
