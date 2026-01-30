@@ -2,32 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: solar-sync-app
-
 spec:
   replicas: 1
-
   selector:
     matchLabels:
       app: solar-sync
-
   template:
     metadata:
       labels:
         app: solar-sync
-
     spec:
       containers:
       - name: solar-sync-container
-        image: yourdockerhub/solar-sync-app:latest
-
+        image: solar-sync-app:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
 
-        resources:
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
-
-        env:
-        - name: CENTRAL_API
-          value: "http://central-server/api/upload"
